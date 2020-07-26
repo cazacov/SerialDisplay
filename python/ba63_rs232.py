@@ -12,4 +12,8 @@ class BA63:
         self.port.write(str.encode("\x1B[2J"))
 
     def position_cursor(self, line, column):
-        self.port.write(str.encode("\x1B[1;1H"))
+        command = f"\x1B[{line};{column}H"
+        self.port.write(str.encode(command))
+
+    def write(self, text):
+        self.port.write(str.encode(text))
